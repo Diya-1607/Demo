@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>HappyMaker App</title>
+ <style>
+   body {
+     font-family: arial, sans-serif;
+     text-align: center;
+     margin: 20px;
+   }
+   #sadnessInput {
+     width: 80%;
+     padding: 10px;
+     margin: 10px;
+   }
+   #submitBtn {
+     padding: 10px;
+     cursor: pointer;
+   }
+   #jokesMemesContainer {
+     display: none;
+     margin-top: 20px;
+   }
+   #jokes, #memes {
+     width: 45%;
+     margin: 10px;
+   }
+ </style>
+</head>
+<body>
+
+ <h1>Welcome to HappyMaker App!</h1>
+
+ <div id="sadnessSection">
+   <p>Are you feeling sad? Tell us why:</p>
+   <input type="text" id="sadnessInput" placeholder="Type your sadness here...">
+   <br>
+   <button id="submitBtn" onclick="submitSadness()">Submit</button>
+ </div>
+
+ <div id="jokesMemesContainer">
+   <div id="jokes">
+     <!-- Jokes will be displayed here -->
+   </div>
+   <div id="memes">
+     <!-- Memes will be displayed here -->
+   </div>
+ </div>
+
+ <script>
+   function submitSadness() {
+     // Get the user's input
+     var sadnessInput = document.getElementById('sadnessInput').value;
+
+     // Check if the input is not empty
+     if (sadnessInput.trim() !== '') {
+       // Hide the sadness input section
+       document.getElementById('sadnessSection').style.display = 'none';
+
+       // Display the jokes and memes section
+       document.getElementById('jokesMemesContainer').style.display = 'block';
+
+       // Call a function to fetch and display jokes and memes
+       displayJokesAndMemes();
+     } else {
+       alert('Please enter why you are sad before submitting.');
+     }
+   }
+
+   function displayJokesAndMemes() {
+     // Fetch jokes and memes (you can use an API for this)
+     // For simplicity, let's assume we have an array of jokes and memes
+     var jokes = ["Why did the computer go to therapy? It had too many bytes of emotional baggage!",
+                  "Why don't scientists trust atoms? Because they make up everything!"];
+
+     var memes = ["meme1.jpg", "meme2.jpg", "meme3.jpg"];
+
+     // Display jokes
+     var jokesContainer = document.getElementById('jokes');
+     jokesContainer.innerHTML = '<h2>Jokes</h2>';
+     for (var i = 0; i < jokes.length; i++) {
+       jokesContainer.innerHTML += '<p>' + jokes[i] + '</p>';
+     }
+
+     // Display memes
+     var memesContainer = document.getElementById('memes');
+     memesContainer.innerHTML = '<h2>Memes</h2>';
+     for (var j = 0; j < memes.length; j++) {
+       memesContainer.innerHTML += '<img src="' + memes[j] + '" alt="Meme">';
+     }
+   }
+ </script>
+
+</body>
+</html>
